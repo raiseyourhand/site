@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Inserir Turma</title>
+    </head>
+    <body>
+        <form action="{% url 'createClass' %}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- <input name='className'></input>
+            <input type="file" name="classFile"></input> -->
+            {{ form }}
+            <button type="submit">Criar</button>
+        </form>
+    </body>
+</html>

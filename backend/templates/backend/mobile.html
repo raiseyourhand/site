@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <form>
+            <!-- {% csrf_token %} -->
+            <input type="text" name="userId" placeholder="userId" />
+            <input type="text" name="qrId" placeholder="qrId" />
+            <button type="submit">Registrar</button>
+        </form>
+
+
+        <script>
+            const form = document.querySelector('form');
+            form.onsubmit = () => {
+                const userId = form.userId.value;
+                const qrId = form.qrId.value;
+                fetch(`http://localhost:8000/api/students/${userId}`, {
+                  method: 'PATCH',
+                  headers: {
+                      Accept: 'application/json',
+                      'Content-Type': 'application/json',
+                      // 'X-CSRFToken': csrf,
+                  },
+                  body: JSON.stringify({
+                      qrCodes: [qrId],
+                  }),
+                }).catch((error) => {
+                    console.error(error);
+                });
+                return false;
+            };
+        </script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        {% if error %}
+            <smal>{{error}}</smal>
+        {% endif %}
+
+        {% if img %}
+            <h1>{{img.id}}</h1>
+            <img src="{% static img.qrCode.url %}" alt=""/>
+        {% else %}
+            <smal>Ocorreu um error.</smal>
+        {% endif %}
+
+        <a href="{% url 'attendanceClose' id=id_class %}">Fechar</a>
+    </body>
+</html>
